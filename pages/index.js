@@ -52,7 +52,7 @@ export default function Home() {
           <>
           <div style={{display:'flex'}}>
             <h1 style={{fontSize:'1.3rem',marginRight:10}}>{title}</h1>
-            <a href={link} target={"_blank"} className={styles.button}>
+            <a href={link} target={"_blank"} className={styles.button} rel="noreferrer">
               Download
             </a>
             </div>

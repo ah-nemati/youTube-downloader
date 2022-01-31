@@ -1,6 +1,7 @@
 {
   "name": "ytd",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
