@@ -25,13 +25,17 @@ export default function Home() {
       await axios
         .post("/api/download", { url })
         .then((req) => {
-          console.log('url :',req.data.url);
+          console.log("url :", req.data.url);
           setlink(req.data.url);
           setTitle(req.data.title);
           setsuccses(true);
         })
         .catch((err) => console.log(err));
     }
+  };
+
+  const cancel = () => {
+    location.reload();
   };
 
   return (
@@ -50,11 +54,20 @@ export default function Home() {
       <main className={styles.main}>
         {succses ? (
           <>
-          <div style={{display:'flex'}}>
-            <h1 style={{fontSize:'1.3rem',marginRight:10}}>{title}</h1>
-            <a href={link} target={"_blank"} className={styles.button} rel="noreferrer">
-              Download
-            </a>
+            <div style={{ display: "flex" }}>
+              <h1 style={{ fontSize: "1.3rem", marginRight: 10 }}>{title}</h1>
+              <a
+                href={link}
+                target={"_blank"}
+                className={styles.button}
+                style={{ background: "mediumspringgreen" }}
+                rel="noreferrer"
+              >
+                Download
+              </a>
+              <button className={styles.button} onClick={cancel}>
+                Cancel
+              </button>
             </div>
           </>
         ) : (
@@ -70,7 +83,7 @@ export default function Home() {
               <>
                 <form onSubmit={send} className={styles.flex}>
                   <Input change={change} />
-                  <button className={styles.button} >Convert</button>
+                  <button className={styles.button}>Convert</button>
                 </form>
               </>
             )}
