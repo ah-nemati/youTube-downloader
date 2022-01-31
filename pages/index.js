@@ -2,8 +2,8 @@ import axios from "axios";
 import Head from "next/head";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
-import { Input } from "./Input";
-import { Loading } from "./Loading";
+import { Input } from "../Components/Input";
+import { Loading } from "../Components/Loading";
 
 export default function Home() {
   const [url, seturl] = useState("");
