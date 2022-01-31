@@ -70,7 +70,7 @@ export default function Home() {
               <>
                 <form onSubmit={send} className={styles.flex}>
                   <Input change={change} />
-                  <button className={styles.button}>Convert</button>
+                  <button className={styles.button} >Convert</button>
                 </form>
               </>
             )}
