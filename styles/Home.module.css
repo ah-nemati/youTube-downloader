@@ -112,7 +112,7 @@
 
 .flex{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 50%;
 }
 
@@ -128,7 +128,6 @@
     height: 40px;
   }
   .flex{
-    flex-direction: column;
     width: 75%;
   }
 }

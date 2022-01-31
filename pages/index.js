@@ -54,7 +54,7 @@ export default function Home() {
       <main className={styles.main}>
         {succses ? (
           <>
-            <div style={{ display: "flex" }}>
+            <div style={styles.grid}>
               <h1 style={{ fontSize: "1.3rem", marginRight: 10 }}>{title}</h1>
               <a
                 href={link}
