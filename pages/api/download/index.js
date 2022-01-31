@@ -19,7 +19,7 @@ const downloadMedia = async (req, res) => {
       quality: "135",
       quality: "134",
     });
-    res.json({
+    res.status(200).json({
       url: format.url,
       title:info.videoDetails.title,
     });

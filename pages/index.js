@@ -23,8 +23,7 @@ export default function Home() {
       setconvert(true);
       e.preventDefault();
       await axios
-        .post("/api", { url })
-        .then(res=>console.log(res))
+        .post("/api/download", { url })
         .then((req) => {
           console.log('url :',req.data.url);
           setlink(req.data.url);
