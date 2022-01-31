@@ -24,6 +24,7 @@ export default function Home() {
       e.preventDefault();
       await axios
         .post("/api", { url })
+        .then(res=>console.log(res))
         .then((req) => {
           console.log('url :',req.data.url);
           setlink(req.data.url);
