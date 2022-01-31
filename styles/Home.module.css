@@ -121,3 +121,15 @@
   flex-direction: column;
   width: 50%;
 }
+
+@media (max-width:600px) {
+  .button{
+    width: 60%;
+    padding: 8px 16px;
+    width: 40%;
+    height: 40px;
+  }
+  .flex{
+    width: 75%;
+  }
+}
