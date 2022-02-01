@@ -12,7 +12,7 @@ export default async (req, res) => {
 const downloadMedia = async (req, res) => {
   try {
     const url = req.body.url;
-    const info = await ytdl.getInfo(url.slice(url.search("=") + 1));
+    const info = await ytdl.getInfo(url.slice(url.search("watch?v=") + 1));
     const format = ytdl.chooseFormat(info.formats, {
       quality: "22",
       quality: "136",
