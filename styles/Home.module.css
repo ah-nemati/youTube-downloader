@@ -105,6 +105,7 @@
   cursor: pointer;
   border-radius: 10px;
   width: 25%;
+  max-width: 150px;
 }
 .button:hover {opacity: 1}
 
@@ -112,6 +113,12 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 600px) {

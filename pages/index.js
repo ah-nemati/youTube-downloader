@@ -4,13 +4,15 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { Input } from "../Components/Input";
 import { Loading } from "../Components/Loading";
+import { Row } from "../Components/Row";
 
 export default function Home() {
   const [url, seturl] = useState("");
   const [succses, setsuccses] = useState(false);
   const [convert, setconvert] = useState(false);
-  const [link, setlink] = useState("");
   const [title, setTitle] = useState("");
+  const [videoDetail, setVideoDetail] = useState("");
+  const [time, settime] = useState(null);
 
   const change = (e) => {
     seturl(e.target.value);
@@ -25,8 +27,8 @@ export default function Home() {
       await axios
         .post("/api/download", { url })
         .then((req) => {
-          console.log("url :", req.data.url);
-          setlink(req.data.url);
+          setVideoDetail(req.data.video);
+          settime(req.data.video[0].time)
           setTitle(req.data.title);
           setsuccses(true);
         })
@@ -54,20 +56,35 @@ export default function Home() {
       <main className={styles.main}>
         {succses ? (
           <>
-            <div className={styles.grid}>
-              <h1 style={{ fontSize: "1.3rem", marginRight: 10 }}>{title}</h1>
-              <a
-                href={link}
-                target={"_blank"}
-                className={styles.button}
-                style={{ background: "mediumspringgreen" }}
-                rel="noreferrer"
-              >
-                Download
-              </a>
+            <div className={styles.row} style={{ marginBottom: "20px" }}>
+              <h3 style={{ marginRight: 10 }}>{title}</h3>
+              <h4 style={{ marginRight: 20 }}>{time}</h4>
               <button className={styles.button} onClick={cancel}>
-                Cancel
+                continue
               </button>
+            </div>
+            <div className={styles.flex}>
+              <div className={styles.row}>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Quality</td>
+                      <td>Size</td>
+                      <td>Download</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.keys(videoDetail).map((key) => (
+                      <Row
+                        url={videoDetail[key]["url"]}
+                        quality={videoDetail[key]["quality"]}
+                        size={videoDetail[key]["size"]}
+                        key={key}
+                      />
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </>
         ) : (

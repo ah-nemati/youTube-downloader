@@ -14,3 +14,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+table, td {
+  border: 1px solid gray;
+  border-collapse: collapse;
+  padding: 30px;
+  text-align: center;
+}
