@@ -28,7 +28,7 @@ export default function Home() {
         .post("/api/download", { url })
         .then((req) => {
           setVideoDetail(req.data.video);
-          settime(req.data.video[0].time)
+          settime(req.data.time)
           setTitle(req.data.title);
           setsuccses(true);
         })

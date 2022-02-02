@@ -14,19 +14,20 @@ const downloadMedia = async (req, res) => {
     const info = await ytdl.getInfo(url.slice(url.search("watch?v=") + 1));
 
     var videoInfo = {};
+    const time=secondsToTime(info.videoDetails.lengthSeconds)
     info.formats.forEach((element, index) => {
       setter(
         element.qualityLabel,
         element.url,
         element.contentLength,
         element.audioBitrate,
-        info.videoDetails.lengthSeconds,
         index,
         videoInfo
       );
     });
     res.status(200).json({
       video: videoInfo,
+      time: time,
       title: info.videoDetails.title,
     });
   } catch (error) {
@@ -39,7 +40,6 @@ const setter = (
   url,
   size,
   audioBitrate,
-  time,
   index,
   videoInfo
 ) => {
@@ -50,7 +50,6 @@ const setter = (
       ((size / 2000000 + Number.EPSILON) * 100) / 100
     );
     videoInfo[index]["url"] = url;
-    videoInfo[index]["time"] = secondsToTime(time);
   } else {
     delete videoInfo[index];
   }
